@@ -1,25 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+int days[]={31,28,31,30,31,30,31,31,30,31,30,31};
 //Check leap year for given year
-int leap(int x)
+void leap(int x)
 {
     if(x%4==0 && x%100!=0 || x%400==0){
-        return 1;
+        days[1]=29;
 	}
     else
-        return 0;
+        days[1]=28;
 }
 //calDate takes days passed and finds the date for it in that year
 int calDate(int *m, int *d,int *y)
 {
-	int days[]={31,28,31,30,31,30,31,31,30,31,30,31};
 	int temp=0;
 	int x=0;
 	//Check leap year
-	if (leap(*y)==1){
-		days[1]=29;
-	}
+	leap(*y);
 	//Find the month it is in
 	while(*d>temp){
 		temp=days[x]+temp;
@@ -40,13 +37,10 @@ int calDate(int *m, int *d,int *y)
 //calDays calculates total days passed from given date from user
 int calDays(int m, int d, int y)
 {
-    int days[]={31,28,31,30,31,30,31,31,30,31,30,31};
 	int i;
 	int tot=0;
 	//Check leap year
-	if (leap(y)==1){
-		days[1]=29;
-	}
+	leap(y);
 	//Check for user input error
 	if (d>days[m-1]){
 		printf("\nPlease enter a correct date");
