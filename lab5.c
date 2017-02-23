@@ -4,18 +4,22 @@
 
 int leap(int x)
 {
-    if(x%4==0 && x%100!=0 || x%400==0)
+    if(x%4==0 && x%100!=0 || x%400==0){
+		printf("\nhere");
         return 1;
+	}
     else
         return 0;
 }
+
 int getDate(int *m, int *d,int *y)
 {
 	int days[]={31,28,31,30,31,30,31,31,30,31,30,31};
 	int temp=0;
 	int x=0;
-	if (leap(*y))
+	if (leap(*y)){
 		days[1]=29;
+	}
 	while(*d>temp){
 		temp=days[x]+temp;
 		x++;
@@ -23,6 +27,7 @@ int getDate(int *m, int *d,int *y)
 	if(temp-*d>0){
 		temp=temp-*d;
 		*d=days[x]-temp;
+		printf("\n%d",*d);
 	}
 	else{
 		*d=days[x];
@@ -36,8 +41,9 @@ int calDays(int m, int d, int y)
 	int i;
 	int tot=0;
 
-	if (leap(y))
+	if (leap(y)){
 		days[1]=29;
+	}
 	if (d>days[m-1]){
 		printf("\nPlease enter a correct date");
 		return 0;
@@ -50,7 +56,7 @@ int calDays(int m, int d, int y)
 int main()
 {
 	
-	char more;
+	char more='y';
 	int mm,dd,yy, choice;
 	while(more=='y' || more =='Y'){
 		printf("This program will find days passed or date in the year");
@@ -68,10 +74,10 @@ int main()
 			scanf("%d",&dd);
 			printf("\nYear: ");
 			scanf("%d",&yy);
-			getDate(&mm,&dd,&yy)
+			getDate(&mm,&dd,&yy);
 			printf("\nThe date is %d-%d-%d",mm,dd,yy);
 		}
-		printf("Would you like to do more?(Y/N): ");
-		scanf("%s",&choice);
+		printf("\nWould you like to do more?(Y/N): ");
+		scanf("%s",&more);
 	}
 }
