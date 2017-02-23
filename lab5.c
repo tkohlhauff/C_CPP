@@ -68,7 +68,8 @@ int main()
 			scanf("%d",&dd);
 			printf("\nYear: ");
 			scanf("%d",&yy);
-			printf("\nThe date is %d-%d-%d",getDate(&mm,&dd,&yy));
+			getDate(&mm,&dd,&yy)
+			printf("\nThe date is %d-%d-%d",mm,dd,yy);
 		}
 		printf("Would you like to do more?(Y/N): ");
 		scanf("%s",&choice);
